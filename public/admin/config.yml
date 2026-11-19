@@ -1,0 +1,206 @@
+# ============================================================
+#  Decap CMS configuration  (open this site at /admin)
+# ============================================================
+#  ⚠️  ONE THING YOU MUST CHANGE:  backend.repo  (line below)
+#      Write:  your-github-username/your-repository-name
+# ============================================================
+
+backend:
+  name: github
+  repo: YOUR-GITHUB-USERNAME/YOUR-REPOSITORY-NAME   # <<< CHANGE THIS
+  branch: main
+  # Login works through Netlify's free OAuth provider (set up in Netlify > Site configuration > Access & security > OAuth).
+  # No base_url is needed while the site is hosted on Netlify.
+
+# Lets you test the dashboard on your own computer without logging in (only works on localhost).
+local_backend: true
+
+# "Publish" saves straight to the main branch; Netlify then rebuilds the live site by itself.
+media_folder: public/images/uploads
+public_folder: /images/uploads
+# (Every image field below also limits uploads to 800 KB, to keep the repository light and the site fast.)
+
+locale: en
+slug:
+  encoding: ascii
+  clean_accents: true
+
+collections:
+  # ---------------------------------------------------------
+  - name: projects
+    label: Visual Design Projects
+    label_singular: Project
+    folder: src/content/projects
+    create: true
+    extension: json
+    format: json
+    slug: "{{slug}}"
+    identifier_field: title
+    summary: "{{title}}  ·  {{category}}"
+    sortable_fields: [order, title]
+    fields:
+      - { label: Title, name: title, widget: string, hint: "প্রজেক্টের নাম" }
+      - { label: Category, name: category, widget: string, hint: "যেমন: Graphic Design, Branding, Social Media। একই বানানে লিখলে ফিল্টারে একসাথে দেখাবে।" }
+      - { label: Description, name: description, widget: text, hint: "প্রজেক্টটি কী ছিল, সংক্ষেপে লিখুন" }
+      - { label: Cover image, name: cover, widget: image, media_library: { config: { max_file_size: 800000 } }, hint: "কভার ছবি। লম্বা (৪:৫) ছবি সবচেয়ে ভালো দেখায়। ৮০০KB-এর কম রাখুন (squoosh.app দিয়ে ছোট করা যায়)।" }
+      - label: Gallery images
+        name: images
+        widget: list
+        hint: "৬–৭টি ছবি। টেনে ওপর-নিচ করলে ছবির ক্রম বদলাবে। ছবির ক্রম এখানকার ক্রমই।"
+        min: 1
+        field: { label: Image, name: image, widget: image, media_library: { config: { max_file_size: 800000 } } }
+      - { label: Order, name: order, widget: number, value_type: int, min: 1, default: 99, hint: "ছোট সংখ্যা আগে দেখাবে (1 সবার আগে)। ক্রম বদলাতে এই সংখ্যা বদলান।" }
+
+  # ---------------------------------------------------------
+  - name: videos
+    label: Videos (Motion & Film)
+    label_singular: Video
+    folder: src/content/videos
+    create: true
+    extension: json
+    format: json
+    slug: "{{slug}}"
+    identifier_field: title
+    summary: "{{title}}  ·  {{category}}"
+    sortable_fields: [order, title]
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Category, name: category, widget: string, hint: "যেমন: Color Grading, Motion Graphics" }
+      - { label: Video link, name: url, widget: string, hint: "YouTube বা Vimeo লিংক পেস্ট করুন, অথবা সরাসরি .mp4 ফাইলের লিংক। বড় ভিডিও GitHub-এ আপলোড করবেন না।" }
+      - { label: Thumbnail, name: thumbnail, widget: image, media_library: { config: { max_file_size: 800000 } }, required: false, hint: "ফাঁকা রাখলে YouTube ভিডিওর নিজের থাম্বনেইল আসবে। Vimeo/MP4 হলে থাম্বনেইল দিন।" }
+      - { label: Description, name: description, widget: text, required: false }
+      - label: Quality versions (MP4 only)
+        name: sources
+        widget: list
+        required: false
+        hint: "শুধু MP4 ভিডিওর জন্য, একই ভিডিওর ভিন্ন কোয়ালিটির লিংক। না দিলে কোয়ালিটি মেনু আসবে না।"
+        fields:
+          - { label: Name, name: label, widget: string, hint: "যেমন 1080p" }
+          - { label: MP4 link, name: url, widget: string }
+      - { label: Order, name: order, widget: number, value_type: int, min: 1, default: 99, hint: "ছোট সংখ্যা আগে দেখাবে। প্রথম ৪টি ভিডিও হোম পেজে আসে।" }
+
+  # ---------------------------------------------------------
+  - name: site
+    label: Site Content
+    files:
+      - label: "Profile & Contact (Hero, links, email)"
+        name: settings
+        file: src/content/settings.json
+        fields:
+          - { label: Name (menu & footer), name: name, widget: string }
+          - { label: Name in hero badge, name: badgeName, widget: string }
+          - { label: Availability text, name: availability, widget: string, hint: "যেমন: Available for new work" }
+          - { label: Professional title, name: title, widget: string }
+          - { label: Hero headline, name: heroTitle, widget: string }
+          - { label: Hero introduction, name: intro, widget: text }
+          - { label: Profile photo, name: profileImage, widget: image, media_library: { config: { max_file_size: 800000 } }, required: false, hint: "About সেকশনে আপনার ছবি। ৮০০KB-এর কম।" }
+          - { label: Photo description (alt text), name: profileAlt, widget: string, required: false }
+          - label: Contact links
+            name: contact
+            widget: object
+            fields:
+              - { label: WhatsApp link, name: whatsapp, widget: string, hint: "যেমন https://wa.me/8801XXXXXXXXX" }
+              - { label: Email, name: email, widget: string, required: false }
+              - { label: Behance link, name: behance, widget: string, required: false }
+              - { label: LinkedIn link, name: linkedin, widget: string, required: false }
+              - { label: Facebook link, name: facebook, widget: string, required: false }
+
+      - label: "About section"
+        name: about
+        file: src/content/about.json
+        fields:
+          - { label: Small label, name: eyebrow, widget: string }
+          - { label: Heading, name: title, widget: string }
+          - { label: Paragraphs, name: paragraphs, widget: list, field: { label: Paragraph, name: paragraph, widget: text } }
+          - { label: Keywords, name: focus, widget: list, hint: "ছোট ট্যাগ, ৪টি রাখাই ভালো", field: { label: Keyword, name: keyword, widget: string } }
+          - { label: Portrait photo, name: image, widget: image, media_library: { config: { max_file_size: 800000 } }, required: false, hint: "ফাঁকা রাখলে Profile photo-ই আসবে" }
+          - label: Education card
+            name: education
+            widget: object
+            fields:
+              - { label: Label, name: label, widget: string }
+              - { label: Period, name: period, widget: string }
+              - { label: Degree, name: degree, widget: string }
+              - { label: Institution, name: institution, widget: string }
+
+      - label: "Services (How I can help)"
+        name: services
+        file: src/content/services.json
+        fields:
+          - { label: Small label, name: eyebrow, widget: string }
+          - { label: Heading, name: title, widget: string }
+          - label: Service cards
+            name: items
+            widget: list
+            fields:
+              - { label: Animation, name: icon, widget: select, options: [{ label: "Video editing (timeline)", value: film }, { label: "Motion graphics (shapes)", value: sparkles }, { label: "Color grading (sliders)", value: sliders }, { label: "Graphic design (pen curve)", value: pen }] }
+              - { label: Title, name: title, widget: string }
+              - { label: Text, name: text, widget: text }
+
+      - label: "Motion & Film section (home page)"
+        name: story
+        file: src/content/story.json
+        fields:
+          - { label: Heading, name: title, widget: string }
+          - { label: Button text, name: moreLabel, widget: string }
+
+      - label: "Process"
+        name: process
+        file: src/content/process.json
+        fields:
+          - { label: Small label, name: eyebrow, widget: string }
+          - { label: Heading, name: title, widget: string }
+          - label: Steps
+            name: steps
+            widget: list
+            fields:
+              - { label: Icon, name: icon, widget: select, options: [{ label: Upload, value: upload }, { label: Scissors, value: scissors }, { label: Send, value: send }] }
+              - { label: Title, name: title, widget: string }
+              - { label: Text, name: text, widget: text }
+
+      - label: "Client reviews (Kind Words)"
+        name: reviews
+        file: src/content/reviews.json
+        fields:
+          - { label: Small label, name: eyebrow, widget: string }
+          - { label: Heading, name: title, widget: string }
+          - { label: Intro line, name: intro, widget: string }
+          - label: Reviews
+            name: items
+            widget: list
+            hint: "রিভিউ লিখে দিন অথবা মেসেজের স্ক্রিনশট আপলোড করুন। কার্ডে নাম ও পদ দেখাবে।"
+            fields:
+              - { label: Client name, name: name, widget: string }
+              - { label: Role / company, name: role, widget: string, required: false }
+              - { label: Review text, name: quote, widget: text, required: false }
+              - { label: Screenshot of the message, name: screenshot, widget: image, media_library: { config: { max_file_size: 800000 } }, required: false, hint: "দিলে লেখার জায়গায় স্ক্রিনশট দেখাবে" }
+              - { label: Client photo, name: avatar, widget: image, media_library: { config: { max_file_size: 800000 } }, required: false }
+              - { label: Stars (0 = hide), name: rating, widget: number, value_type: int, min: 0, max: 5, default: 5 }
+              - { label: Show "Sample" badge, name: sample, widget: boolean, default: false, hint: "আসল রিভিউ দিলে এটি বন্ধ রাখুন" }
+
+      - label: "Client logos (Trusted by)"
+        name: clients
+        file: src/content/clients.json
+        fields:
+          - { label: Label text, name: title, widget: string }
+          - label: Logos
+            name: items
+            widget: list
+            fields:
+              - { label: Company name, name: name, widget: string }
+              - { label: Logo, name: logo, widget: image, media_library: { config: { max_file_size: 800000 } }, hint: "স্বচ্ছ ব্যাকগ্রাউন্ডের PNG/SVG হলে ডার্ক থিমে সবচেয়ে ভালো দেখায়" }
+
+      - label: "Experience (hidden on the site for now)"
+        name: experience
+        file: src/content/experience.json
+        fields:
+          - label: Jobs
+            name: items
+            widget: list
+            fields:
+              - { label: Company, name: company, widget: string }
+              - { label: Role, name: role, widget: string }
+              - { label: About the company, name: note, widget: string, required: false }
+              - { label: What I did, name: details, widget: list, required: false, field: { label: Point, name: point, widget: string } }
+              - { label: Start (YYYY-MM), name: start, widget: string, pattern: ['^\d{4}-\d{2}$', "Use YYYY-MM, e.g. 2025-03"] }
+              - { label: End (YYYY-MM), name: end, widget: string, required: false, hint: "এখনো কাজ করলে ফাঁকা রাখুন" }
