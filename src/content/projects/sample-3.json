@@ -1,0 +1,15 @@
+{
+  "title": "Sample Project 3",
+  "category": "Marketing Design",
+  "description": "Sample content. Replace this project from the Admin dashboard with your real work.",
+  "cover": "/images/sample/p3/cover.svg",
+  "images": [
+    "/images/sample/p3/g1.svg",
+    "/images/sample/p3/g2.svg",
+    "/images/sample/p3/g3.svg",
+    "/images/sample/p3/g4.svg",
+    "/images/sample/p3/g5.svg",
+    "/images/sample/p3/g6.svg"
+  ],
+  "order": 3
+}

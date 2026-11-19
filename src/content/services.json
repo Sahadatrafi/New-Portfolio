@@ -1,0 +1,26 @@
+{
+  "eyebrow": "Services",
+  "title": "How I can help",
+  "items": [
+    {
+      "icon": "film",
+      "title": "Video Editing",
+      "text": "Clean, well-paced edits for social media, promotions and longer videos."
+    },
+    {
+      "icon": "sparkles",
+      "title": "Motion Graphics",
+      "text": "Animated titles, graphics and effects that add polish to a video."
+    },
+    {
+      "icon": "sliders",
+      "title": "Cinematic Color Grading",
+      "text": "Color work that gives your footage a consistent, cinematic look."
+    },
+    {
+      "icon": "pen",
+      "title": "Graphic Design & Branding",
+      "text": "Social media, real estate and advertising creatives, plus visual identity."
+    }
+  ]
+}

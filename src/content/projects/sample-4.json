@@ -1,0 +1,15 @@
+{
+  "title": "Sample Project 4",
+  "category": "Social Media",
+  "description": "Sample content. Replace this project from the Admin dashboard with your real work.",
+  "cover": "/images/sample/p4/cover.svg",
+  "images": [
+    "/images/sample/p4/g1.svg",
+    "/images/sample/p4/g2.svg",
+    "/images/sample/p4/g3.svg",
+    "/images/sample/p4/g4.svg",
+    "/images/sample/p4/g5.svg",
+    "/images/sample/p4/g6.svg"
+  ],
+  "order": 4
+}

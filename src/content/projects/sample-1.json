@@ -1,0 +1,15 @@
+{
+  "title": "Sample Project 1",
+  "category": "Graphic Design",
+  "description": "Sample content. Replace this project from the Admin dashboard with your real work.",
+  "cover": "/images/sample/p1/cover.svg",
+  "images": [
+    "/images/sample/p1/g1.svg",
+    "/images/sample/p1/g2.svg",
+    "/images/sample/p1/g3.svg",
+    "/images/sample/p1/g4.svg",
+    "/images/sample/p1/g5.svg",
+    "/images/sample/p1/g6.svg"
+  ],
+  "order": 1
+}

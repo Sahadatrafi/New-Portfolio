@@ -1,0 +1,10 @@
+{
+  "eyebrow": "What clients say",
+  "title": "Kind Words",
+  "intro": "Words from the people I've worked with.",
+  "items": [
+    { "name": "Sample Client One", "role": "Sample role, Sample company", "quote": "Sample review. This is placeholder text so you can see the design. Replace it with a real review from the Admin dashboard.", "avatar": "", "screenshot": "", "rating": 5, "sample": true },
+    { "name": "Sample Client Two", "role": "Sample role, Sample company", "quote": "Sample review. Add a client's real words here, with or without a photo, rating or chat screenshot.", "avatar": "", "screenshot": "", "rating": 5, "sample": true },
+    { "name": "Sample Client Three", "role": "Sample role, Sample company", "quote": "Sample review. You can also upload a screenshot of a message or comment instead of typing the text.", "avatar": "", "screenshot": "", "rating": 0, "sample": true }
+  ]
+}

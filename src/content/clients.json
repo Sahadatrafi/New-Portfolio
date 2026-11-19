@@ -1,0 +1,21 @@
+{
+  "title": "Trusted by",
+  "items": [
+    {
+      "name": "Barakah",
+      "logo": "https://sahadatrafi.netlify.app/Trusted%20By/Barakah.png"
+    },
+    {
+      "name": "CPH",
+      "logo": "https://sahadatrafi.netlify.app/Trusted%20By/cph.png"
+    },
+    {
+      "name": "HDA",
+      "logo": "https://sahadatrafi.netlify.app/Trusted%20By/HDA.png"
+    },
+    {
+      "name": "AL",
+      "logo": "https://sahadatrafi.netlify.app/Trusted%20By/AL.png"
+    }
+  ]
+}

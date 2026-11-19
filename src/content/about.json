@@ -1,0 +1,20 @@
+{
+  "eyebrow": "About me",
+  "title": "Hi, I'm Sahadat Rafi",
+  "paragraphs": [
+    "I'm a Video Editor and Graphic Designer based in Dhaka, Bangladesh. I work on marketing design at Barakah Housing Ltd. and create design content for Cumilla People's Hospital remotely."
+  ],
+  "focus": [
+    "Video Editing",
+    "Motion Graphics",
+    "Graphic Design",
+    "Branding & Visual Identity"
+  ],
+  "image": "",
+  "education": {
+    "label": "Education",
+    "period": "2023 \u2014 2027 (Expected)",
+    "degree": "B.Sc. in Computer Science & Engineering",
+    "institution": "Northern University Bangladesh"
+  }
+}

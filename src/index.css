@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: 251 251 253; --surface: 255 255 255; --ink: 29 29 31;
+  --muted: 100 110 128; --line: 15 23 42; --accent: 37 99 235;
+}
+.dark {
+  --bg: 2 6 23; --surface: 15 23 42; --ink: 245 247 250;
+  --muted: 148 163 184; --line: 255 255 255; --accent: 59 130 246;
+}
+html { scroll-behavior: smooth; scroll-padding-top: 3rem; }
+html { overflow-x: clip; }
+body { @apply bg-bg text-ink font-sans antialiased; overflow-x: clip; }
+.dark body { background: linear-gradient(180deg, #020617 0%, #0f172a 60%, #14264f 100%); background-attachment: fixed; }
+:focus-visible { outline: 2px solid rgb(var(--accent)); outline-offset: 3px; border-radius: 8px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
+
+/* Hero portrait: ripples, rotating arc, orbiting chips, gentle float */
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes ripple { 0% { transform: scale(0.96); opacity: 0.55; } 100% { transform: scale(1.28); opacity: 0; } }
+.portrait-ripple { animation: ripple 4.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite; border: 1px solid rgb(var(--accent) / 0.6); }
+.portrait-arc {
+  background: conic-gradient(from 0deg, transparent 0 65%, rgb(var(--accent)) 100%);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px));
+  animation: spin 9s linear infinite;
+}
+.portrait-orbit { animation: spin 28s linear infinite; }
+.portrait-chip-inner { animation: spin 28s linear infinite reverse; }
+@media (prefers-reduced-motion: reduce) {
+  .portrait-ripple, .portrait-arc, .portrait-orbit, .portrait-chip-inner { animation: none; }
+}
+
+/* Standard section spacing: every section uses .section-y. 100px top + 100px bottom = 200px gap between any two sections. */
+@layer components { .section-y { @apply py-[100px]; } }
+
+.no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+@keyframes skill-bob {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(var(--dx, 0px), var(--dy, -10px)) rotate(var(--rot, 2deg)); }
+}
+.skill-float { animation: skill-bob var(--dur, 5s) ease-in-out var(--delay, 0s) infinite; }
+@media (prefers-reduced-motion: reduce) { .skill-float { animation: none; } }
+
+/* Footer: smooth marquee, rotating ring and drifting glow */
+@keyframes marquee { to { transform: translateX(-50%); } }
+@keyframes drift { 0%, 100% { transform: translate(-50%, 0) scale(1); } 50% { transform: translate(-42%, -24px) scale(1.12); } }
+.marquee-track { animation: marquee 45s linear infinite; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+.footer-glow { animation: drift 14s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .marquee-track, .footer-glow { animation: none; } }
+
+@keyframes blob {
+  0%, 100% { border-radius: 42% 58% 60% 40% / 45% 40% 60% 55%; transform: rotate(0deg) scale(1); }
+  33% { border-radius: 60% 40% 45% 55% / 55% 60% 40% 45%; transform: rotate(6deg) scale(1.04); }
+  66% { border-radius: 48% 52% 38% 62% / 40% 50% 50% 60%; transform: rotate(-5deg) scale(0.98); }
+}
+.about-blob { animation: blob 12s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .about-blob { animation: none; } }
+
+/* Timeline: group 2 starts exactly under the centre playhead, then everything glides right to left. */
+@keyframes timeline-move { to { transform: translateX(-1358px); } }
+.timeline-track { margin-left: calc(50% - 1358px); animation: timeline-move 34s linear infinite; }
+@media (prefers-reduced-motion: reduce) { .timeline-track { animation: none; } }
+
+/* Services visuals */
+@keyframes sv-sweep { from { left: 0; } to { left: 100%; } }
+@keyframes sv-hop { 0%, 100% { transform: translateY(0) scale(1); } 40% { transform: translateY(-26px) scale(1.1); } 60% { transform: translateY(-26px) scale(1.1); } }
+@keyframes sv-slide { 0%, 100% { left: 6%; } 50% { left: 84%; } }
+@keyframes sv-hue { to { filter: hue-rotate(360deg); } }
+@keyframes sv-draw { 0% { stroke-dashoffset: 320; } 55%, 100% { stroke-dashoffset: 0; } }
+.sv-sweep { animation: sv-sweep 3.6s linear infinite; }
+.sv-hop { animation: sv-hop 1.9s ease-in-out infinite; }
+.sv-slide { animation: sv-slide 3s ease-in-out infinite; }
+.sv-hue { animation: sv-hue 6s linear infinite; }
+.sv-draw { stroke-dasharray: 320; animation: sv-draw 3.6s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .sv-sweep, .sv-hop, .sv-slide, .sv-hue, .sv-draw { animation: none; } }
+
+/* Story section: colours of the stacked paper-like frames */
+:root { --f0: rgba(228, 219, 215, 0.35); --f1: #d1c5c0; --f2: #bfb0ab; --f3: #d9cfca; }
+.dark { --f0: #1e293b; --f1: #1b2a4e; --f2: #172554; --f3: #24324f; }
+
+/* "More videos" button: soft pulse ring, light sweep and a nudging arrow so it catches the eye */
+@keyframes more-ring { 0% { transform: scale(1); opacity: 0.55; } 100% { transform: scale(1.2, 1.7); opacity: 0; } }
+@keyframes more-shine { 0% { transform: translateX(-120%); } 55%, 100% { transform: translateX(120%); } }
+@keyframes nudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(5px); } }
+.more-ring { animation: more-ring 2.4s ease-out infinite; }
+.more-shine { background: linear-gradient(100deg, transparent 30%, rgba(255,255,255,0.35) 50%, transparent 70%); animation: more-shine 2.8s ease-in-out infinite; }
+.arrow-nudge { animation: nudge 1.2s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .more-ring, .more-shine, .arrow-nudge { animation: none; } }
+
+/* Green "available" dot: soft, smooth blink */
+@keyframes dot-live {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.55); }
+  50% { opacity: 0.35; box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+}
+.dot-live { animation: dot-live 2s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .dot-live { animation: none; } }
+
+/* Contact button: clear but calm pulsing ring */
+@keyframes contact-ring { 0% { transform: scale(1); opacity: 0.8; } 75%, 100% { transform: scale(1.2, 1.55); opacity: 0; } }
+.contact-ring { animation: contact-ring 2.4s ease-out infinite; }
+@media (prefers-reduced-motion: reduce) { .contact-ring { animation: none; } }
+
+/* Theme switch: circular reveal (View Transitions API) and a soft cross-fade fallback */
+::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+::view-transition-old(root) { z-index: 1; }
+::view-transition-new(root) { z-index: 2; }
+html.theme-anim *, html.theme-anim *::before, html.theme-anim *::after {
+  transition: background-color 0.6s ease, color 0.6s ease, border-color 0.6s ease, fill 0.6s ease, stroke 0.6s ease !important;
+}

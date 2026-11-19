@@ -1,0 +1,9 @@
+{
+  "eyebrow": "Process",
+  "title": "My simple process",
+  "steps": [
+    { "icon": "upload", "title": "Share Your Footage", "text": "Send your raw files, references and goals, so we agree on the style and platform before I start." },
+    { "icon": "scissors", "title": "Edit, Review & Refine", "text": "I make the first cut, then refine it with your feedback until everything feels right." },
+    { "icon": "send", "title": "Deliver", "text": "You get the final video or design, ready for your platform." }
+  ]
+}

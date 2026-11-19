@@ -1,0 +1,15 @@
+{
+  "title": "Sample Project 6",
+  "category": "Branding",
+  "description": "Sample content. Replace this project from the Admin dashboard with your real work.",
+  "cover": "/images/sample/p6/cover.svg",
+  "images": [
+    "/images/sample/p6/g1.svg",
+    "/images/sample/p6/g2.svg",
+    "/images/sample/p6/g3.svg",
+    "/images/sample/p6/g4.svg",
+    "/images/sample/p6/g5.svg",
+    "/images/sample/p6/g6.svg"
+  ],
+  "order": 6
+}

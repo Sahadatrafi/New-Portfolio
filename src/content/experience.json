@@ -1,0 +1,7 @@
+{
+  "items": [
+    { "company": "Barakah Housing Ltd.", "role": "Graphic Designer", "note": "Real estate company", "details": ["Working on marketing design", "Creating content for the company's Facebook page and website"], "start": "2025-03", "end": "" },
+    { "company": "Cumilla People's Hospital", "role": "Graphic Designer", "note": "Remote", "details": ["Daily doctor updates for Facebook", "Doctor info design and video"], "start": "2024-01", "end": "" },
+    { "company": "House De Arch", "role": "Jr. Graphic Designer", "note": "Architecture firm", "details": ["Created content for the company's Facebook page and website", "Designed frames and wall stickers for interior projects when needed"], "start": "2024-04", "end": "2024-12" }
+  ]
+}
