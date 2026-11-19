@@ -7,7 +7,7 @@
 
 backend:
   name: github
-  repo: YOUR-GITHUB-USERNAME/YOUR-REPOSITORY-NAME   # <<< CHANGE THIS
+  repo: Sahadatrafi/New-Portfolio   # <<< CHANGE THIS
   branch: main
   # Login works through Netlify's free OAuth provider (set up in Netlify > Site configuration > Access & security > OAuth).
   # No base_url is needed while the site is hosted on Netlify.
