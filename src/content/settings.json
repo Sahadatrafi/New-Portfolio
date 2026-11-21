@@ -1,9 +1,4 @@
 {
-  "name": "SAHADAT RAFI",
-  "title": "Video Editor & Graphic Designer",
-  "intro": "Crafting visual experiences through pixel-perfect design and compelling video narratives. Let's build something beautiful together.",
-  "profileImage": "https://sahadatrafi.netlify.app/Hero-img.png",
-  "profileAlt": "Sahadat Rafi",
   "contact": {
     "whatsapp": "https://wa.me/8801615859440",
     "email": "sahadatrafigraphic@gmail.com",
@@ -11,7 +6,12 @@
     "linkedin": "",
     "facebook": "https://www.facebook.com/sahadatrafi1572"
   },
-  "heroTitle": "Video editing that tells your story.",
-  "availability": "Available for new work",
-  "badgeName": "Sahadat Rafi"
+  "profileAlt": "Sahadat Rafi",
+  "name": "SAHADAT RAFI",
+  "intro": "Crafting visual experiences through pixel-perfect design and compelling video narratives. Let's build something beautiful together.",
+  "badgeName": "Sahadat Rafi",
+  "profileImage": "https://sahadatrafi.netlify.app/Hero-img.png",
+  "title": "Video Editor & Graphic Designer",
+  "availability": "Available for new work!",
+  "heroTitle": "Video editing that tells your story."
 }
